@@ -1,0 +1,11 @@
+{
+  "name": "ai-shopping-assistant",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A local Python conversational shopping-assistant demo",
+  "scripts": {
+    "start": "python -m backend.server",
+    "dev": "python -m backend.server"
+  },
+  "engines": { "python": ">=3.10" }
+}
