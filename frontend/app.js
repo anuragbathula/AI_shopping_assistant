@@ -5,7 +5,8 @@ const status = document.querySelector('#status');
 
 function addMessage(text, role) { const item = document.createElement('article'); item.className = `message ${role}`; item.textContent = text; chat.append(item); chat.scrollTop = chat.scrollHeight; return item; }
 async function ask(message) {
-  addMessage(message, 'customer'); input.value = ''; input.disabled = true; status.textContent = 'Checking that for you…';
+  addMessage(message, 'customer'); input.value = ''; input.disabled = true;
+  status.textContent = /order\s+\d+/i.test(message) ? 'Looking up your order…' : 'Let me check that for you…';
   try {
     const response = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message }) });
     const data = await response.json();

@@ -1,14 +1,15 @@
 # AI Shopping Assistant
 
-A local, dependency-free proof of concept for a conversational shopping assistant. It supports product discovery, order tracking, delivery estimates, friendly empty/error states, and a purchase endpoint.
+A local, dependency-free Python proof of concept for a conversational shopping assistant. It demonstrates RAG-grounded non-transactional help, explicit tool calling for commerce actions, order tracking, delivery estimates, purchase creation, and friendly empty/error states.
 
 ## Project structure
 
 ```
 backend/
-  server.js          # HTTP API and static-file host
-  chat.js            # Intent handling and customer-safe replies
-  data/store.js      # Mock backend tool implementations and demo data
+  server.py          # Python HTTP API and static-file host (port 3001)
+  chat.py            # Intent handling and customer-safe tool orchestration
+  tools.py           # Mock backend tool interfaces and structured demo data
+  retrieval.py       # Local retrieval adapter for support context
 frontend/
   index.html         # Accessible chat interface
   app.js             # UI state, requests, loading/error handling
@@ -17,15 +18,17 @@ frontend/
 
 ## Start locally
 
-1. Install [Node.js 18+](https://nodejs.org/) if it is not already available.
+1. Install [Python 3.10+](https://www.python.org/downloads/) if it is not already available. No packages need to be installed.
 2. From this folder, run:
 
    ```powershell
-   npm start
+   python -m backend.server
    ```
 
-3. Open [http://localhost:3000](http://localhost:3000).
+3. Open [http://localhost:3001](http://localhost:3001).
 
-Try `Show Nike t-shirts`, `Track order 1234`, or `When will order 5678 arrive?`.
+Alternatively, if npm is installed, `npm start` runs the same Python server.
 
-Demo order numbers are `1234`, `5678`, and `9012`. This app uses local mock tool functions; the chat layer uses their public results only and does not expose implementation details.
+Try `Show Nike t-shirts`, `Show laptops under $1000`, `Do you have running shoes in size 10?`, `Track order 1234`, or `When will order 5678 arrive?`.
+
+Demo order numbers are `1234`, `5678`, and `9012`. Product and order answers are derived solely from structured mock tool results. Retrieval is used only for matching public support content; if it finds nothing, the assistant says so rather than inventing context. The app does not expose internal implementation details.

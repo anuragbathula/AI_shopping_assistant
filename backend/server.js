@@ -20,4 +20,4 @@ http.createServer(async (req, res) => {
     if (!file.startsWith(frontend) || !fs.existsSync(file)) return send(res, 404, 'Page not found.', 'text/plain; charset=utf-8');
     return send(res, 200, fs.readFileSync(file), types[path.extname(file)] || 'application/octet-stream');
   } catch (error) { return send(res, 500, { error: 'Something went wrong. Please try again.' }); }
-}).listen(process.env.PORT || 3000, () => console.log('Shopping assistant running at http://localhost:3000'));
+}).listen(process.env.PORT || 3001, () => console.log('Shopping assistant running at http://localhost:3001'));

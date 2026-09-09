@@ -2,12 +2,10 @@
   "name": "ai-shopping-assistant",
   "version": "1.0.0",
   "private": true,
-  "description": "A local conversational shopping-assistant demo",
+  "description": "A local Python conversational shopping-assistant demo",
   "scripts": {
-    "start": "node backend/server.js",
-    "dev": "node backend/server.js"
+    "start": "python -m backend.server",
+    "dev": "python -m backend.server"
   },
-  "engines": {
-    "node": ">=18"
-  }
+  "engines": { "python": ">=3.10" }
 }
