@@ -1,12 +1,14 @@
 # AI Shopping Assistant
 
 A local, dependency-free Python proof of concept for a conversational shopping assistant. It demonstrates RAG-grounded non-transactional help, explicit tool calling for commerce actions, order tracking, delivery estimates, purchase creation, and friendly empty/error states.
+##Created only for POC with samples hardcoded mock data added in tools calls so RAg can run with text terms.
 
 ## Project structure
 
 ```
 backend/
   server.py          # Python HTTP API and static-file host (port 3001)
+ ## if you are running you can change port to your own machines default, I picked since my machine has different ports occupied.
   chat.py            # Intent handling and customer-safe tool orchestration
   tools.py           # Mock backend tool interfaces and structured demo data
   retrieval.py       # Local retrieval adapter for support context
